@@ -1,0 +1,114 @@
+<html>
+	<head>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script src="http://code.highcharts.com/highcharts.js"></script>
+		<script src="http://code.highcharts.com/modules/exporting.js"></script>
+		
+		<style type="text/css">
+			body{margin:0;font-family:arial}ul{list-style:none}.left{float:left}.right{float:right}.clear{clear:both}#header-wrapper{background:#000;padding:20px 10px}h1{color:#3ddafc;margin:0}#content-wrapper{padding:20px}.result-indicator{display:inline-block;height:30px;margin-right:10px;width:30px;cursor:pointer}.pass .result-indicator{background:green}.fail .result-indicator{background:red}.run-response{color:#999;font-size:14px;margin-left:5px;display:inline-block;margin-top:2px}.run-timeleft{color:#999;font-size:12px;margin-left:5px;display:inline-block;margin-top:2px}div.description-wrapper{margin-top:20px}div.cases-wrapper{padding-top:20px}li.fail,li.pass{margin:20px 0}.subtitle{color:#9a9a9a;font-size:14px}.activity-name{width:80%}.desc-container{color:#999;display:none;font-size:13px;padding-left:40px}.logo{background:url(http://s0.uvnimg.com/files/2012/06/2017/portal_dd_sprite_all_horizontal_v3.png) 0 -52px no-repeat;width:255px;height:36px;display:block}
+		</style>
+		
+		<script type="text/javascript">
+			$(function () {
+		    $('#container').highcharts({
+		        chart: {
+		            plotBackgroundColor: null,
+		            plotBorderWidth: 1,//null,
+		            plotShadow: false
+		        },
+		        title: {
+		            text: 'Results for running Crawler app on univision.com site'
+		        },
+		        tooltip: {
+		            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+		        },
+		        plotOptions: {
+		            pie: {
+		                allowPointSelect: true,
+		                cursor: 'pointer',
+		                dataLabels: {
+		                    enabled: true,
+		                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+		                    style: {
+		                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+		                    }
+		                }
+		            }
+		        },
+		        series: [{
+		            type: 'pie',
+		            name: 'Test result',
+					colors: ['#33CF5E', 'gray', 'red','blue','yellow','silver','violet'],
+		            data: [
+		                @@@TestPercent@@@
+		            ]
+		        }]
+		    });
+		});
+
+			$(function () {
+		    $('#executionContainer').highcharts({
+		        title: {
+		            text: 'Execution time',
+		            x: -20 //center
+		        },
+				
+		        xAxis: {
+		            categories: [@@@CasesTitles@@@]
+		        },
+		        yAxis: {
+		            title: {
+		                text: 'Execution time (secs)'
+		            },
+		            plotLines: [{
+		                value: 0,
+		                width: 1,
+		                color: '#808080'
+		            }]
+		        },
+		        tooltip: {
+		            valueSuffix: 'seconds'
+		        },
+		        legend: {
+		            layout: 'vertical',
+		            align: 'right',
+		            verticalAlign: 'middle',
+		            borderWidth: 0
+		        },
+		        series: [{
+		            name: 'Time in secs',
+		            data: [@@@CasesExecution@@@]
+		        }]
+		    });
+		});
+		$('document').ready(function(){
+			//description container
+			$('.fail .result-indicator').click(function(){
+				$(this).parent('li').find('.desc-container').slideToggle();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<div id="page-wrapper">
+			<div id="header-wrapper">
+				<div class=" left">
+					<span class="logo" />
+				</div>
+				<h1>Univision.com Crawler Report</h1>
+			</div>
+			
+			<div id="content-wrapper">
+
+				<div class="diagram-wrapper"></div>
+				<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+				<div class="cases-wrapper">
+					<h3>Failed URLs <span class="subtitle">@@@testCasesHeader@@@</span></h3>
+					<ul>
+						@@@TestCases@@@
+					</ul>
+				</div>							
+			</div>
+		</div>
+	</body>
+</html>

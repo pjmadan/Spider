@@ -1,0 +1,10 @@
+diff a/resources/config.properties b/resources/config.properties	(rejected hunks)
+@@ -8,7 +8,7 @@
+ MaxPagesToFetch=50
+ ConnectionTimeout=5000
+ MaxPagesToWriteReport=-1
+-ReportedHttpStatus=400,404,500,408
++ReportedHttpStatus=400,404,500,408,301
+ CrawlerFilter=css|js|bmp|gif|jpe?g|png|tiff?|mid|mp2|mp3|mp4|wav|avi|mov|mpeg|ram|m4v|pdf|rm|smil|wmv|swf|wma|zip|rar|gz
+ EmailReport=False
+ EmailReportFrom=admin@gmail.com

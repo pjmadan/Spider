@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crawler>
+<website >
+<url>http://yahoo.com</url>
+<elements></elements>
+<assertions></assertions>
+</website>
+<website >
+<url>http://univision.com</url>
+<elements></elements>
+<assertions></assertions>
+</website>
+<website >
+<url>http://cnn.com</url>
+<elements></elements>
+<assertions></assertions>
+</website>
+<website >
+<url>http://bbc.com</url>
+<elements></elements>
+<assertions></assertions>
+</website>
+<website >
+<url>http://espn.com</url>
+<elements></elements>
+<assertions></assertions>
+</website>
+<website >
+<url>http://hbo.com</url>
+<elements></elements>
+<assertions></assertions>
+</website>
+</crawler>
